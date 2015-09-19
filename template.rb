@@ -15,7 +15,7 @@ gem 'slim-rails'
 gem 'bourbon'
 gem 'neat'
 
-group :development, :test do
+gem_group :development, :test do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
