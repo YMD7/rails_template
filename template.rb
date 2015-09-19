@@ -13,7 +13,7 @@ gem 'unicorn'
 gem 'devise'
 gem 'slim-rails'
 gem 'bourbon'
-aem 'neat'
+gem 'neat'
 
 group :development, :test do
   gem 'pry-rails'
