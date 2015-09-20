@@ -64,6 +64,9 @@ create_file 'app/assets/stylesheets/layout.scss', <<LAYOUT
 // --------------------------------
 //                     + reset +
 // --------------------------------
+html, body {
+  height: 100%;
+}
 html, body,
 h1, h2, h3, h4, h5,
 p, a {
