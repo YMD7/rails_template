@@ -74,6 +74,9 @@ Dir.mkdir 'app/assets/stylesheets/partial/'
 # DB migration
 rake 'db:migrate'
 
+# design folder
+Dir.mkdir 'design'
+
 # remove files
 remove_file 'app/assets/stylesheets/application.css'
 
