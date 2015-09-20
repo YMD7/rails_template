@@ -52,6 +52,9 @@ create_file 'app/assets/stylesheets/layout.scss', <<LAYOUT
 // -- + import + -------------
 @import "variables.scss";
 
+// -- + include media snippet + -------------
+// @include media($mobile) {}
+
 // ==========================================================================
 //
 //  ++ general ++
