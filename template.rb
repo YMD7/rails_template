@@ -74,6 +74,7 @@ p, a {
   color: $default_color;
   font-family: $default_font;
   text-decoration: none;
+  line-height: 100%;
 }
 h1, h2, h3, h4, h5 {
   font-weight: normal;
