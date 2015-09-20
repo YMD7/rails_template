@@ -43,33 +43,102 @@ JS
 create_file 'app/assets/stylesheets/application.scss', <<SCSS, force: true
 @import "bourbon";
 @import "neat";
-@import "common/*";
-@import "partial/*";
+@import "./*";
 SCSS
 
-Dir.mkdir 'app/assets/stylesheets/common/'
-
-create_file 'app/assets/stylesheets/common/_layout.scss', <<LAYOUT
+create_file 'app/assets/stylesheets/layout.scss', <<LAYOUT
 @charset "utf-8";
+
+// -- + import + -------------
+@import "variables.scss";
+
+// ==========================================================================
+//
+//  ++ general ++
+//
+// ==========================================================================
+
+// --------------------------------
+//                     + reset +
+// --------------------------------
+html, body,
+h1, h2, h3, h4, h5,
+p, a {
+  margin: 0;
+  color: $default_color;
+  font-family: $default_font;
+  text-decoration: none;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+
+// --------------------------------
+//                     + global class +
+// --------------------------------
+.hidden {
+  display: none !important;
+}
+
+
+// --------------------------------
+//                     + bourbon +
+// --------------------------------
+
+// -- + neat + -------------
+
+// -- + refills + -------------
+
+
+
+// ==========================================================================
+//
+//  ++ header ++
+//
+// ==========================================================================
+
+
+
+// ==========================================================================
+//
+//  ++ main ++
+//
+// ==========================================================================
+
+
+
+// ==========================================================================
+//
+//  ++ footer ++
+//
+// ==========================================================================
+
+
 
 LAYOUT
 
-create_file 'app/assets/stylesheets/common/_variables.scss', <<VARIABLES
+create_file 'app/assets/stylesheets/variables.scss', <<VARIABLES
 @charset "utf-8";
+
+// -- + devise breakpoint + -------------
+$desktop: new-breakpoint(min-width 880px 12);
+$tablet:  new-breakpoint(min-width 768px 12);
+$mobile:  new-breakpoint(max-width 750px 12);
+
+// -- + typography + -------------
+$default_color: #000;
+$jp_gothic: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, $helvetica;
+$jp_mincho: "Hiragino Mincho Pro", "ヒラギノ明朝 Pro W3", 游明朝, YuMincho, HG明朝E, $georgia;
+$default_font: $jp_gothic;
+
+// -- + color + -------------
+
+// -- + size + -------------
+
+// -- + function + -------------
 
 VARIABLES
-
-create_file 'app/assets/stylesheets/common/_neat_variables.scss', <<NEAT
-@charset "utf-8";
-
-NEAT
-
-create_file 'app/assets/stylesheets/common/_refills.scss', <<REFILLS
-@charset "utf-8";
-
-REFILLS
-
-Dir.mkdir 'app/assets/stylesheets/partial/'
 
 # DB migration
 rake 'db:migrate'
