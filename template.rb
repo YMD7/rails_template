@@ -161,7 +161,7 @@ namespace :unicorn do
   desc "Start unicorn for development env."
   task(:start) {
     config = Rails.root.join('config', 'unicorn.rb')
-    sh "bundle exec unicorn_rails -c #{config} -E development -D"
+    sh "bundle exec unicorn_rails -c \#{config} -E development -D"
   }
 
   desc "Stop unicorn"
@@ -178,7 +178,7 @@ namespace :unicorn do
 
   desc "Unicorn pstree (depends on pstree command)"
   task(:pstree) do
-    sh "pstree '#{unicorn_pid}'"
+    sh "pstree '\#{unicorn_pid}'"
   end
 
   def unicorn_signal signal
@@ -204,11 +204,11 @@ rails_root = File.expand_path('../../', __FILE__)
 worker_processes 2
 working_directory rails_root
 
-listen "#{rails_root}/tmp/unicorn.sock"
-pid "#{rails_root}/tmp/unicorn.pid"
+listen "\#{rails_root}/tmp/unicorn.sock"
+pid "\#{rails_root}/tmp/unicorn.pid"
 
-stderr_path "#{rails_root}/log/unicorn_error.log"
-stdout_path "#{rails_root}/log/unicorn.log"
+stderr_path "\#{rails_root}/log/unicorn_error.log"
+stdout_path "\#{rails_root}/log/unicorn.log"
 
 UNICORN
 
