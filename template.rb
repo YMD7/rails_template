@@ -11,8 +11,12 @@ gsub_file '.gitignore', /^config\/secrets.yml\n/, ''
 gsub_file 'Gemfile', /#.+\n/, ''
 gsub_file 'Gemfile', /^$\n{2,}/, "\n"
 
+gem 'thor'
 gem 'unicorn'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'slim-rails'
 gem 'bourbon'
 gem 'neat'
@@ -30,6 +34,23 @@ end
 
 # install gems
 run 'bundle install'
+
+# devise
+insert_into_file 'config/environments/development.rb', <<RUBY, after: 'config.assets.debug = true'
+
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+RUBY
+
+generate devise:views
+generate devise User
+
+insert_into_file 'app/models/user.rb', <<RUBY, after: ":validatable"
+,
+         :confirmable, :lockable, :timeoutable, :omniauthable,
+         omniauth_providers: [:facebook]
+RUBY
+
+gsub_file Dir.glob("db/migrate/**_devise_create_users.rb").first, /(?<!#)#\s/, ''
 
 # convert erb file to slim
 run 'bundle exec erb2slim -d app/views'
