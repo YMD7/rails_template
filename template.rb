@@ -41,8 +41,8 @@ insert_into_file 'config/environments/development.rb', <<RUBY, after: 'config.as
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 RUBY
 
-generate devise:views
-generate devise User
+generate 'devise:views'
+generate 'devise User'
 
 insert_into_file 'app/models/user.rb', <<RUBY, after: ":validatable"
 ,
