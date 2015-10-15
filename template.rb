@@ -38,9 +38,11 @@ run 'bundle install'
 # devise
 insert_into_file 'config/environments/development.rb', <<RUBY, after: 'config.assets.debug = true'
 
+  # devise
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 RUBY
 
+generate 'devise:install'
 generate 'devise:views'
 generate 'devise User'
 
