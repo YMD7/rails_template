@@ -45,6 +45,7 @@ RUBY
 generate 'devise:install'
 generate 'devise:views'
 generate 'devise User'
+generate 'migration add_columns_to_users provider uid username'
 
 insert_into_file 'app/models/user.rb', <<RUBY, after: ":validatable"
 ,
