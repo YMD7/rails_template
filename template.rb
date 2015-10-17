@@ -6,6 +6,10 @@
 run 'gibo OSX Ruby Rails Vim SublimeText > .gitignore' rescue nil
 gsub_file '.gitignore', /^config\/initializers\/secret_token.rb\n/, ''
 gsub_file '.gitignore', /^config\/secrets.yml\n/, ''
+insert_into_file '.gitignore', <<GIT, after: 'Rails.gitignore'
+
+.env
+GIT
 
 # Gemfile
 gsub_file 'Gemfile', /#.+\n/, ''
@@ -13,6 +17,7 @@ gsub_file 'Gemfile', /^$\n{2,}/, "\n"
 
 gem 'thor'
 gem 'unicorn'
+gem 'dotenv-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
@@ -34,6 +39,11 @@ end
 
 # install gems
 run 'bundle install'
+
+# dotenv
+create_file '.env', <<DOTENV,
+# .env
+DOTENV
 
 # devise
 insert_into_file 'config/environments/development.rb', <<RUBY, after: 'config.assets.debug = true'
