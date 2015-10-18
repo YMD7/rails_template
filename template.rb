@@ -25,6 +25,7 @@ gem 'omniauth-facebook'
 gem 'slim-rails'
 gem 'bourbon'
 gem 'neat'
+gem "font-awesome-rails"
 
 gem_group :development do
   gem 'html2slim'
@@ -83,6 +84,7 @@ JS
 create_file 'app/assets/stylesheets/application.scss', <<SCSS, force: true
 @import "bourbon";
 @import "neat";
+@import "font-awesome";
 @import "./*";
 SCSS
 
