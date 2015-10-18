@@ -63,6 +63,10 @@ insert_into_file 'app/models/user.rb', <<RUBY, after: ":validatable"
          omniauth_providers: [:facebook]
 RUBY
 
+insert_into_file 'config/initializers/devise.rb', <<RUBY, after: "# ==> OmniAuth"
+   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
+RUBY
+
 gsub_file Dir.glob("db/migrate/**_devise_create_users.rb").first, /(?<!#)#\s/, ''
 
 # convert erb file to slim
