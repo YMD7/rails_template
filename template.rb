@@ -85,17 +85,12 @@ create_file 'app/assets/stylesheets/application.scss', <<SCSS, force: true
 @import "bourbon";
 @import "neat";
 @import "font-awesome";
+@import "variables";
 @import "./*";
 SCSS
 
 create_file 'app/assets/stylesheets/layout.scss', <<LAYOUT
 @charset "utf-8";
-
-// -- + import + -------------
-@import "variables.scss";
-
-// -- + include media snippet + -------------
-// @include media($mobile) {}
 
 // ==========================================================================
 //
