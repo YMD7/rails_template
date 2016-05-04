@@ -42,7 +42,7 @@ end
 run 'bundle install'
 
 # dotenv
-create_file '.env', <<DOTENV,
+create_file '.env', <<DOTENV
 # .env
 DOTENV
 
