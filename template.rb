@@ -68,8 +68,6 @@ insert_into_file 'config/initializers/devise.rb', <<RUBY, after: "# ==> OmniAuth
    config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
 RUBY
 
-gsub_file Dir.glob("db/migrate/**_devise_create_users.rb").first, /(?<!#)#\s/, ''
-
 # convert erb file to slim
 run 'bundle exec erb2slim -d app/views'
 
