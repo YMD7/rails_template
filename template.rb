@@ -25,6 +25,7 @@ gem 'omniauth-facebook'
 gem 'slim-rails'
 gem 'bourbon'
 gem 'neat'
+gem 'bitters'
 gem "font-awesome-rails"
 
 gem_group :development do
@@ -78,109 +79,59 @@ create_file 'app/assets/javascripts/application.js', <<JS, force: true
 //= require_tree .
 JS
 
+# make directory structure as like FLOCSS
+run 'mkdir app/assets/stylesheets/foundation/'
+run 'mkdir app/assets/stylesheets/layout/'
+run 'mkdir app/assets/stylesheets/object/component/'
+run 'mkdir app/assets/stylesheets/object/project'
+run 'mkdir app/assets/stylesheets/object/utility'
+
+# install bourbon/bitters
+run 'bitters install --path=app/assets/stylesheets/foundation/'
+
+# install normalize.css
+run 'curl https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css > app/assets/stylesheets/foundation/'
+
 # app/assets/stylesheets
 create_file 'app/assets/stylesheets/application.scss', <<SCSS, force: true
+// ==========================================================================
+// Foundation
+// ==========================================================================
+
+@import "foundation/_normalize";
 @import "bourbon";
 @import "neat";
+@import "foundation/base/base";
 @import "font-awesome";
-@import "variables";
-@import "./*";
+
+// ==========================================================================
+// Layout
+// ==========================================================================
+
+// @import "layout/";
+
+// ==========================================================================
+// Object
+// ==========================================================================
+
+// -----------------------------------------------------------------
+// Component
+// -----------------------------------------------------------------
+
+// @import "object/component/";
+
+// -----------------------------------------------------------------
+// Project
+// -----------------------------------------------------------------
+
+// @import "object/project/";
+
+// -----------------------------------------------------------------
+// Utility
+// -----------------------------------------------------------------
+
+// @import "object/utility/";
 SCSS
-
-create_file 'app/assets/stylesheets/layout.scss', <<LAYOUT
-@charset "utf-8";
-
-// ==========================================================================
-//
-//  ++ general ++
-//
-// ==========================================================================
-
-// --------------------------------
-//                     + reset +
-// --------------------------------
-html, body {
-  height: 100%;
-}
-html, body,
-h1, h2, h3, h4, h5,
-p, a {
-  margin: 0;
-  color: $default_color;
-  font-family: $default_font;
-  text-decoration: none;
-  line-height: 100%;
-}
-h1, h2, h3, h4, h5 {
-  font-weight: normal;
-}
-
-
-// --------------------------------
-//                     + global class +
-// --------------------------------
-.hidden {
-  display: none !important;
-}
-
-
-// --------------------------------
-//                     + bourbon +
-// --------------------------------
-
-// -- + neat + -------------
-
-// -- + refills + -------------
-
-
-
-// ==========================================================================
-//
-//  ++ header ++
-//
-// ==========================================================================
-
-
-
-// ==========================================================================
-//
-//  ++ main ++
-//
-// ==========================================================================
-
-
-
-// ==========================================================================
-//
-//  ++ footer ++
-//
-// ==========================================================================
-
-
-
-LAYOUT
-
-create_file 'app/assets/stylesheets/variables.scss', <<VARIABLES
-@charset "utf-8";
-
-// -- + devise breakpoint + -------------
-$desktop: new-breakpoint(min-width 880px 12);
-$tablet:  new-breakpoint(min-width 768px 12);
-$mobile:  new-breakpoint(max-width 750px 12);
-
-// -- + typography + -------------
-$default_color: #000;
-$jp_gothic: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, $helvetica;
-$jp_mincho: "Hiragino Mincho Pro", "ヒラギノ明朝 Pro W3", 游明朝, YuMincho, HG明朝E, $georgia;
-$default_font: $jp_gothic;
-
-// -- + color + -------------
-
-// -- + size + -------------
-
-// -- + function + -------------
-
-VARIABLES
 
 # DB migration
 rake 'db:migrate'
