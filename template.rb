@@ -23,9 +23,9 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'slim-rails'
-gem 'bourbon', '4.2.7'
-gem 'neat'
-gem 'bitters', '1.3.2'
+gem 'bourbon', '3.2.4'
+gem 'neat', '1.5.1'
+gem 'bitters', '1.0.0'
 gem "font-awesome-rails"
 
 gem_group :development do
