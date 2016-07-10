@@ -90,11 +90,7 @@ run 'mkdir app/assets/stylesheets/object/utility'
 run 'bitters install --path=app/assets/stylesheets/foundation/'
 
 # install normalize.css
-<<<<<<< HEAD
 run 'curl https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css > app/assets/stylesheets/foundation/normalize.css'
-=======
-run 'curl https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css > app/assets/stylesheets/foundation/'
->>>>>>> origin/master
 
 # app/assets/stylesheets
 create_file 'app/assets/stylesheets/application.scss', <<SCSS, force: true
